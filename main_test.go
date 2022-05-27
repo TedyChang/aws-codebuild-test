@@ -12,7 +12,7 @@ func TestSum(t *testing.T) {
 		args args
 		want int
 	}{
-		{"asd", args{1,2}, 2},
+		{"asd", args{1, 2}, 5},
 	}
 
 	for _, tt := range tests {
