@@ -4,7 +4,6 @@ phases:
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
-      - docker pull public.ecr.aws/docker/library/golang:1.18
   build:
     commands:
       - docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp public.ecr.aws/docker/library/golang:1.18 go test ./... > result
