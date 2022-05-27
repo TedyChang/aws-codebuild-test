@@ -7,7 +7,6 @@ phases:
 
   build:
     commands:
-      - cd $CODEBUILD_SRC_DIR/aws_tester
       - docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp public.ecr.aws/docker/library/golang:1.18 go test ./... > result
 artifacts:
   files:
