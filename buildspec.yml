@@ -8,4 +8,7 @@ phases:
     commands:
       - echo Building the Go code...
       - cd $CODEBUILD_SRC_DIR/aws_tester
-      - go test ./...
+      - go test ./... > result
+artifacts:
+  files:
+    - result
