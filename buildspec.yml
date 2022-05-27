@@ -1,8 +1,12 @@
 version: 0.2
 
+phases:
+  pre-build:
+    commands:
+      - echo Logging in to Amazon ECR...
+
   build:
     commands:
-      - echo Build started on `date`
       - cd $CODEBUILD_SRC_DIR/aws_tester
       - docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp public.ecr.aws/docker/library/golang:1.18 go test ./... > result
 artifacts:
