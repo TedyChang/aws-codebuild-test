@@ -10,7 +10,7 @@ phases:
       - "export TESTS_RESULT=$(docker run --rm -v $CODEBUILD_SRC_DIR:/usr/src/myapp -w /usr/src/myapp public.ecr.aws/docker/library/golang:1.18 go test ./... | tail -1)"
       - echo $TESTS_RESULT
       - |
-        if [[ ${$TESTS_RESULT} -eq "FAIL" ]]; then
+        if [[ $TESTS_RESULT -eq "FAIL" ]]; then
           echo test-fail
         else
           echo test-success
