@@ -8,7 +8,7 @@ phases:
     commands:
       - echo CODEBUILD_SRC_DIR = $CODEBUILD_SRC_DIR
       - "export TESTS_RESULT=$(docker run --rm -v $CODEBUILD_SRC_DIR:/usr/src/myapp -w /usr/src/myapp public.ecr.aws/docker/library/golang:1.18 go test ./... | tail -1)"
-      - "$(docker run --rm -v $CODEBUILD_SRC_DIR:/usr/src/myapp -w /usr/src/myapp public.ecr.aws/docker/library/golang:1.18 go test ./... > result)"
+      - "$(docker run --rm -v $CODEBUILD_SRC_DIR:/usr/src/myapp -w /usr/src/myapp public.ecr.aws/docker/library/golang:1.18 go test ./... > $CODEBUILD_SRC_DIR/result)"
       - echo $TESTS_RESULT
       - |
         if [[ ${$TESTS_RESULT} -eq "FAIL" ]]; then
