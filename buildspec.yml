@@ -7,8 +7,8 @@ phases:
   build:
     commands:
       - echo CODEBUILD_SRC_DIR = $CODEBUILD_SRC_DIR
-      - docker run --rm -v $CODEBUILD_SRC_DIR:/usr/src/myapp -w /usr/src/myapp public.ecr.aws/docker/library/golang:1.18 go test ./...
-      - docker run --rm -v $CODEBUILD_SRC_DIR:/usr/src/myapp -w /usr/src/myapp public.ecr.aws/docker/library/golang:1.18 go test ./... > result
+      - "export TESTS_RESULT=$(docker run --rm -v $CODEBUILD_SRC_DIR:/usr/src/myapp -w /usr/src/myapp public.ecr.aws/docker/library/golang:1.18 go test ./... | tail -1)"
+      - echo $TESTS_RESULT
 artifacts:
   files:
     - result
