@@ -6,6 +6,8 @@ phases:
       - echo Logging in to Amazon ECR...
   build:
     commands:
+      - echo CODEBUILD_SRC_DIR = $CODEBUILD_SRC_DIR
+      - docker run --rm -v $CODEBUILD_SRC_DIR:/usr/src/myapp -w /usr/src/myapp public.ecr.aws/docker/library/golang:1.18 go test ./...
       - docker run --rm -v $CODEBUILD_SRC_DIR:/usr/src/myapp -w /usr/src/myapp public.ecr.aws/docker/library/golang:1.18 go test ./... > result
 artifacts:
   files:
