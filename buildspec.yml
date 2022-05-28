@@ -12,10 +12,9 @@ phases:
       - |
         if [[ $TESTS_RESULT -eq "FAIL" ]]; then
           echo test-fail
-          export CODEBUILD_BUILD_SUCCEEDING=0
+          exit 255
         else
           echo test-success
-          export CODEBUILD_BUILD_SUCCEEDING=1
         fi
 
 artifacts:
