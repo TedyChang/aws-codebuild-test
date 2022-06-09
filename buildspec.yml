@@ -12,9 +12,11 @@ phases:
       - |
         if [[ $TESTS_RESULT -eq "FAIL" ]]; then
           echo test-fail
+          curl -X POST --data-urlencode "payload={\"channel\": \"#aws-snstest\", \"username\": \"webhookbot\", \"text\": \"테스트 실패하였습니다.\", \"icon_emoji\": \":ghost:\"}" https://hooks.slack.com/services/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
           exit 255
         else
           echo test-success
+          curl -X POST --data-urlencode "payload={\"channel\": \"#aws-snstest\", \"username\": \"webhookbot\", \"text\": \"테스트 성공하였습니다.\", \"icon_emoji\": \":ghost:\"}" https://hooks.slack.com/services/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
         fi
 
 artifacts:
