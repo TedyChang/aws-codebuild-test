@@ -23,3 +23,7 @@ artifacts:
   files:
     - buildspec.yml
     - main.go
+
+cache:
+  paths:
+    - '/root/.m2/**/*'
