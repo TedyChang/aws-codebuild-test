@@ -27,3 +27,7 @@ artifacts:
   files:
     - buildspec.yml
     - main.go
+
+cache:
+  paths:
+    - '/var/lib/docker/**/*'
