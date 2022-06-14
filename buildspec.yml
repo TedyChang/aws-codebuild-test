@@ -27,8 +27,3 @@ artifacts:
   files:
     - buildspec.yml
     - main.go
-
-cache:
-  paths:
-    - '/root/.m2/**/*'
-    - '/var/lib/docker/**/*'
