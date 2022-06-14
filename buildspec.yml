@@ -6,6 +6,8 @@ phases:
       - echo Logging in to Amazon ECR...
   build:
     commands:
+      - echo "docker images!!!"
+      - docker images
       - echo CODEBUILD_SRC_DIR = $CODEBUILD_SRC_DIR
       - "export TESTS_RESULT=$(docker run --rm --privileged -v $CODEBUILD_SRC_DIR:/usr/src/myapp -w /usr/src/myapp public.ecr.aws/docker/library/golang:1.18 go test ./... | tail -1)"
       - echo $TESTS_RESULT
