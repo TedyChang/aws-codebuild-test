@@ -30,4 +30,4 @@ artifacts:
 
 cache:
   paths:
-    - '/var/lib/docker'
+    - '/var/lib/docker/*'
