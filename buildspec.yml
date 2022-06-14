@@ -6,11 +6,13 @@ phases:
       - echo Logging in to Amazon ECR...
   build:
     commands:
-      - echo "docker images!!!"
+      - echo "docker images11111!!!"
       - docker images
       - echo CODEBUILD_SRC_DIR = $CODEBUILD_SRC_DIR
-      - "export TESTS_RESULT=$(docker run --rm --privileged -v $CODEBUILD_SRC_DIR:/usr/src/myapp -w /usr/src/myapp public.ecr.aws/docker/library/golang:1.18 go test ./... | tail -1)"
+      - "export TESTS_RESULT=$(docker run --rm -v $CODEBUILD_SRC_DIR:/usr/src/myapp -w /usr/src/myapp public.ecr.aws/docker/library/golang:1.18 go test ./... | tail -1)"
       - echo $TESTS_RESULT
+      - echo "docker images22222!!!"
+      - docker images
       - |
         if [[ $TESTS_RESULT -eq "FAIL" ]]; then
           echo test-fail
